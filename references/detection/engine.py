@@ -81,7 +81,7 @@ def evaluate(model, data_loader, device):
     iou_types = _get_iou_types(model)
     coco_evaluator = CocoEvaluator(coco, iou_types)
     print(coco_evaluator.coco_eval['bbox'].params)
-    coco_evaluator.coco_eval['bbox'].params.iouThrs = np.linspace(.0.2, 0.95, int(np.round((0.95 - .5) / .05)) + 1, endpoint=True)
+    coco_evaluator.coco_eval['bbox'].params.iouThrs = np.linspace(0.2, 0.95, int(np.round((0.95 - .5) / .05)) + 1, endpoint=True)
 
     for data in metric_logger.log_every(data_loader, 100, header):
         images = list(img.to(device) for img in data['images'])
