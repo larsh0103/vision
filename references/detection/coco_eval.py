@@ -23,6 +23,7 @@ class CocoEvaluator(object):
         self.coco_gt = coco_gt
 
         self.iou_types = iou_types
+        self.iouThrs = [0.2,0.3,0.5]
         self.coco_eval = {}
         for iou_type in iou_types:
             self.coco_eval[iou_type] = COCOeval(coco_gt, iouType=iou_type)
